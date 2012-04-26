@@ -35,6 +35,7 @@
 	if ([[DBSession sharedSession] handleOpenURL:url]) {
 		if ([[DBSession sharedSession] isLinked]) {
 			NSLog(@"Dropbox linked!");
+            [self.window.rootViewController performSelector:@selector(uploadFilePressed:) withObject:nil afterDelay:0.5];
 		}
 		return YES;
 	}
