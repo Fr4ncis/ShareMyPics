@@ -38,10 +38,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" style="gray" id="YQL-J3-hvE">
-                                <rect key="frame" x="150" y="288" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </activityIndicatorView>
                             <button opaque="NO" alpha="0.0" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hqT-3G-pz9">
                                 <rect key="frame" x="136" y="196" width="48" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -102,11 +98,15 @@
                                     <action selector="restartProcess:" destination="2" eventType="touchUpInside" id="Jpd-4O-CJP"/>
                                 </connections>
                             </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="load01.png" id="EVL-HL-AMa">
+                                <rect key="frame" x="112" y="196" width="96" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="YQL-J3-hvE" id="rjI-3v-a0K"/>
+                        <outlet property="animatedLoadImage" destination="EVL-HL-AMa" id="mGo-EC-422"/>
                         <outlet property="launchImage" destination="Ivx-aE-inW" id="8YL-1z-awp"/>
                         <outlet property="shareImg" destination="ptI-Df-Nv0" id="mmF-HV-3RS"/>
                         <outlet property="uploadingImg" destination="0Oy-IM-L9k" id="mKS-S2-anP"/>
@@ -121,12 +121,32 @@
         <image name="Default.png" width="320" height="480"/>
         <image name="email-48x48.png" width="48" height="48"/>
         <image name="facebook-48x48.png" width="48" height="48"/>
-        <image name="restart.png" width="16" height="16"/>
+        <image name="load01.png" width="96" height="96"/>
+        <image name="restart.png" width="128" height="128"/>
         <image name="share.png" width="320" height="100"/>
         <image name="twitter-48x48.png" width="48" height="48"/>
         <image name="uploading.png" width="320" height="100"/>
         <image name="zipping.png" width="320" height="100"/>
     </resources>
+    <classes>
+        <class className="ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="choosePicsPressed:"/>
+                <relationship kind="action" name="linkDropboxPressed:"/>
+                <relationship kind="action" name="restartProcess:"/>
+                <relationship kind="action" name="shareEmailPressed:"/>
+                <relationship kind="action" name="shareFbPressed:"/>
+                <relationship kind="action" name="shareTwitterPressed:"/>
+                <relationship kind="action" name="uploadFilePressed:"/>
+                <relationship kind="outlet" name="animatedLoadImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="launchImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="shareImg" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="uploadingImg" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="zippingImg" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

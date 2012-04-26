@@ -25,13 +25,22 @@
 @synthesize uploadingImg;
 @synthesize shareImg;
 @synthesize shareLink;
-@synthesize activityIndicator;
+@synthesize animatedLoadImage;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self performSelector:@selector(choosePicsPressed:) withObject:nil afterDelay:0.5];
+    NSMutableArray *loadImagesArray = [[NSMutableArray alloc] initWithCapacity:24];
+    for (int i = 1; i < 25; i++) {
+        if (i < 10) {
+            [loadImagesArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"load0%d.png", i]]];
+        } else {
+            [loadImagesArray addObject:[UIImage imageNamed:[NSString stringWithFormat:@"load%d.png", i]]];
+        }
+    }
+    animatedLoadImage.animationImages = loadImagesArray;
 }
 
 
@@ -41,7 +50,7 @@
     [self setZippingImg:nil];
     [self setUploadingImg:nil];
     [self setShareImg:nil];
-    [self setActivityIndicator:nil];
+    [self setAnimatedLoadImage:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -147,8 +156,9 @@
 }
 
 - (void)nextScreen:(NSArray *)info {
-    [activityIndicator startAnimating];
+    [animatedLoadImage startAnimating];
     [launchImage setHidden:YES];
+    [animatedLoadImage setHidden:NO];
     [UIView animateWithDuration:0.5 animations:^(void){
         [zippingImg setAlpha:1.0];
     }];
@@ -174,7 +184,8 @@
 
 - (void)showShareScreen {
     [((UILabel*)[self.view viewWithTag:4]) setText:shareLink];
-    [activityIndicator stopAnimating];
+    [animatedLoadImage stopAnimating];
+    [animatedLoadImage setHidden:YES];
     [UIView animateWithDuration:0.5 animations:^(void){
         uploadingImg.frame = CGRectMake(-320, 0, 320, 100);
         shareImg.frame = CGRectMake(0, 0, 320, 100);

@@ -26,6 +26,6 @@
 @property (retain, nonatomic) IBOutlet UIImageView *uploadingImg;
 @property (retain, nonatomic) IBOutlet UIImageView *shareImg;
 @property (retain, nonatomic) NSString *shareLink;
-@property (retain, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (retain, nonatomic) IBOutlet UIImageView *animatedLoadImage;
 
 @end
